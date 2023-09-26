@@ -1,0 +1,16 @@
+{
+    "name": "soulrpg/cgrd-news-app",
+    "description": "Test assignment",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Soulrpg\\CgrdNewsApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michal Lewandowski",
+            "email": "lewandowskimichal@zoho.eu"
+        }
+    ]
+}

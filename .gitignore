@@ -1,29 +1,4 @@
-# Cache and logs (Symfony2)
-/app/cache/*
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
-
-# Email spool folder
-/app/spool/*
-
-# Cache, session files and logs (Symfony3)
-/var/cache/*
-/var/logs/*
-/var/sessions/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
-!var/sessions/.gitkeep
-
-# Logs (Symfony4)
-/var/log/*
-!var/log/.gitkeep
-
-# Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
-
-# Managed by Composer
+### Managed by Composer
 /app/bootstrap.php.cache
 /var/bootstrap.php.cache
 /bin/*
@@ -31,22 +6,23 @@
 !bin/symfony_requirements
 /vendor/
 
-# Assets and user uploads
-/web/bundles/
-/web/uploads/
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# PHPUnit
-/app/phpunit.xml
-/phpunit.xml
+# Local History for Visual Studio Code
+.history/
 
-# Build data
-/build/
+# Built Visual Studio Code Extensions
+*.vsix
 
-# Composer PHAR
-/composer.phar
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
-# Backup entities generated with doctrine:generate:entities command
-**/Entity/*~
-
-# Embedded web-server pid file
-/.web-server-pid
+# End of https://www.toptal.com/developers/gitignore/api/symfony,visualstudiocode

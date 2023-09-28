@@ -8,6 +8,11 @@
     </head>
     <body>
         <div id="content">
+            {% if flashMessage %}
+                <div class="flashMessage {{ flashMessage.type }}">
+                    {{ flashMessage.message }}
+                </div>
+            {% endif %}
             <img src="/Images/logo.svg" class="logo" alt="logo"/>
             {% block content %}{% endblock %}
         </div>

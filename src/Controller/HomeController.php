@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Soulrpg\CgrdNewsApp\Controller;
+use Soulrpg\CgrdNewsApp\Utility\FlashMessageUtility;
 
 class HomeController
 {
@@ -11,6 +12,8 @@ class HomeController
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../Templates');
         $twig = new \Twig\Environment($loader);
 
-        echo $twig->render('home.html');
+        $flashMessage = FlashMessageUtility::getFlashMessage();
+
+        echo $twig->render('home.html', ['flashMessage' => $flashMessage]);
     }
 }

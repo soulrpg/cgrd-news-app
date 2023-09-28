@@ -14,6 +14,7 @@ class Router
         'GET' => [
             '/' => [HomeController::class, 'home'],
             '/show-news/:id' => [NewsController::class, 'show'],
+            '/logout' => [LoginController::class, 'logout'],
         ],
         'POST' => [
             '/login' => [LoginController::class, 'login'],

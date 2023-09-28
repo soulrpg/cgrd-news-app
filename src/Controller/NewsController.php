@@ -29,6 +29,8 @@ class NewsController
         if ($this->newsRepository->add($title, $description)) {
             FlashMessageUtility::setFlashMessage('News was successfully created!', FlashMessageUtility::TYPE_SUCCESS);
         }
+        header('Location: /', true, 303);
+        die();
     }
 
     public function update(int $id): void
@@ -44,6 +46,8 @@ class NewsController
         if ($this->newsRepository->update($id, $title, $description)) {
             FlashMessageUtility::setFlashMessage('News was successfully changed!', FlashMessageUtility::TYPE_SUCCESS);
         }
+        header('Location: /', true, 303);
+        die();
     }
 
     public function delete(int $id): void
@@ -51,5 +55,7 @@ class NewsController
         if ($this->newsRepository->remove($id)) {
             FlashMessageUtility::setFlashMessage('News was deleted!', FlashMessageUtility::TYPE_SUCCESS);
         }
+        header('Location: /', true, 303);
+        die();
     }
 }

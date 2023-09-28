@@ -9,10 +9,15 @@ use Soulrpg\CgrdNewsApp\Utility\FlashMessageUtility;
 
 class NewsController
 {
+    private NewsRepository $newsRepository;
+
+    public function __construct()
+    {
+        $this->newsRepository = new NewsRepository();
+    }
+
     public function create(): void
     {
-        $newsRepository = new NewsRepository();
-
         $title = $_POST['title'] ?? '';
         if ($title === null) {
             FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
@@ -21,15 +26,13 @@ class NewsController
         }
         $description = $_POST['description'] ?? '';
 
-        if ($newsRepository->add($title, $description)) {
+        if ($this->newsRepository->add($title, $description)) {
             FlashMessageUtility::setFlashMessage('News was successfully created!', FlashMessageUtility::TYPE_SUCCESS);
         }
     }
 
     public function update(int $id): void
     {
-        $newsRepository = new NewsRepository();
-
         $title = $_POST['title'] ?? '';
         if ($title === null) {
             FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
@@ -38,16 +41,14 @@ class NewsController
         }
         $description = $_POST['description'] ?? '';
 
-        if ($newsRepository->update($id, $title, $description)) {
+        if ($this->newsRepository->update($id, $title, $description)) {
             FlashMessageUtility::setFlashMessage('News was successfully changed!', FlashMessageUtility::TYPE_SUCCESS);
         }
     }
 
     public function delete(int $id): void
     {
-        $newsRepository = new NewsRepository();
-
-        if ($newsRepository->remove($id)) {
+        if ($this->newsRepository->remove($id)) {
             FlashMessageUtility::setFlashMessage('News was deleted!', FlashMessageUtility::TYPE_SUCCESS);
         }
     }

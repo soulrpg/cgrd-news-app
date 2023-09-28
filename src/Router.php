@@ -4,24 +4,23 @@ declare(strict_types=1);
 
 namespace Soulrpg\CgrdNewsApp;
 
+use Soulrpg\CgrdNewsApp\Controller\HomeController;
+use Soulrpg\CgrdNewsApp\Controller\LoginController;
+use Soulrpg\CgrdNewsApp\Controller\NewsController;
+
 class Router
 {
     const routes = [
         'GET' => [
-            '/' => [HomeController::class, 'home'],
+            '/' => [NewsController::class, 'list'],
             '/login' => [LoginController::class, 'login'],
-            '/news' => [NewsController::class, 'list'],
-            '/news/:id' => [NewsController::class, 'show'],
+            '/show-news/:id' => [NewsController::class, 'show'],
         ],
         'POST' => [
-            '/news' => [NewsController::class, 'create'],
+            '/create-news' => [NewsController::class, 'create'],
+            '/update-news/:id' => [NewsController::class, 'update'],
+            '/delete-news/:id' => [NewsController::class, 'delete'],
         ],
-        'PUT' => [
-            '/news/:id' => [NewsController::class, 'update'],
-        ],
-        'DELETE' => [
-            '/news/:id' => [NewsController::class, 'delete'],
-        ]
     ];
 
     public function start(): void
@@ -37,7 +36,7 @@ class Router
             $param = (int) $pathParts[2];
             $pathParts[2] = ':id';
             $path = implode('/', $pathParts);
-        } 
+        }
         $callable = self::routes[$method][$path];
         if (!isset($callable)) {
             throw new \Exception('Route path not found.');

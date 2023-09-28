@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Soulrpg\CgrdNewsApp;
+namespace Soulrpg\CgrdNewsApp\Controller;
 
 class LoginController
 {

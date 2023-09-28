@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Soulrpg\CgrdNewsApp;
+namespace Soulrpg\CgrdNewsApp\Controller;
 
 class NewsController
 {
     public function list(): void 
     {
-        echo('News - list');
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../Templates');
+        $twig = new \Twig\Environment($loader);
+
+        echo $twig->render('index.html', ['news' => '']);
     }
 
     public function show(int $id): void 

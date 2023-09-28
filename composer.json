@@ -12,5 +12,8 @@
             "name": "Michal Lewandowski",
             "email": "lewandowskimichal@zoho.eu"
         }
-    ]
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
 }

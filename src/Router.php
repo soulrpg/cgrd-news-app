@@ -12,11 +12,11 @@ class Router
 {
     const routes = [
         'GET' => [
-            '/' => [NewsController::class, 'list'],
-            '/login' => [LoginController::class, 'login'],
+            '/' => [HomeController::class, 'home'],
             '/show-news/:id' => [NewsController::class, 'show'],
         ],
         'POST' => [
+            '/login' => [LoginController::class, 'login'],
             '/create-news' => [NewsController::class, 'create'],
             '/update-news/:id' => [NewsController::class, 'update'],
             '/delete-news/:id' => [NewsController::class, 'delete'],

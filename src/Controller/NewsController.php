@@ -4,33 +4,51 @@ declare(strict_types=1);
 
 namespace Soulrpg\CgrdNewsApp\Controller;
 
+use Soulrpg\CgrdNewsApp\Repository\NewsRepository;
+use Soulrpg\CgrdNewsApp\Utility\FlashMessageUtility;
+
 class NewsController
 {
-    public function list(): void 
+    public function create(): void
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../Templates');
-        $twig = new \Twig\Environment($loader);
+        $newsRepository = new NewsRepository();
 
-        echo $twig->render('index.html', ['news' => '']);
+        $title = $_POST['title'] ?? '';
+        if ($title === null) {
+            FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
+            header('Location: /', true, 303);
+            die();
+        }
+        $description = $_POST['description'] ?? '';
+
+        if ($newsRepository->add($title, $description)) {
+            FlashMessageUtility::setFlashMessage('News was successfully created!', FlashMessageUtility::TYPE_SUCCESS);
+        }
     }
 
-    public function show(int $id): void 
+    public function update(int $id): void
     {
-        echo('News - show:' . $id);
+        $newsRepository = new NewsRepository();
+
+        $title = $_POST['title'] ?? '';
+        if ($title === null) {
+            FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
+            header('Location: /', true, 303);
+            die();
+        }
+        $description = $_POST['description'] ?? '';
+
+        if ($newsRepository->update($id, $title, $description)) {
+            FlashMessageUtility::setFlashMessage('News was successfully changed!', FlashMessageUtility::TYPE_SUCCESS);
+        }
     }
 
-    public function create(): void 
+    public function delete(int $id): void
     {
-        echo('News - create:');
-    }
+        $newsRepository = new NewsRepository();
 
-    public function update(int $id): void 
-    {
-        echo('News - update');
-    }
-
-    public function delete(int $id): void 
-    {
-        echo('News delete');
+        if ($newsRepository->remove($id)) {
+            FlashMessageUtility::setFlashMessage('News was deleted!', FlashMessageUtility::TYPE_SUCCESS);
+        }
     }
 }

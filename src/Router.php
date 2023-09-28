@@ -13,7 +13,6 @@ class Router
     const routes = [
         'GET' => [
             '/' => [HomeController::class, 'home'],
-            '/show-news/:id' => [NewsController::class, 'show'],
             '/logout' => [LoginController::class, 'logout'],
         ],
         'POST' => [

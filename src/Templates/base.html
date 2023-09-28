@@ -7,8 +7,9 @@
         <script src="newsForm.js"></script>
     </head>
     <body>
-        <img src="/Images/logo.svg" alt="logo"/>
-        <h2>All news</h2>
-        <h2>Create news</h2>
+        <div id="content">
+            <img src="/Images/logo.svg" class="logo" alt="logo"/>
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>

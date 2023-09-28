@@ -5,3 +5,50 @@ body {
     height: 100vh;
     max-width:100%;
 }
+
+#content {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#content > * {
+    width: 100%;
+}
+
+#content img.logo {
+    width: 100px;
+    margin-bottom: 50px;
+}
+
+#content .btn {
+    width: 100%;
+    background-color: #16396B;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+}
+
+#content input {
+    width: 100%;
+    display: block;
+    padding: 15px 20px 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    background-color: #FCFCFC;
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    color: #16396B;
+}
+
+#content input::placeholder {
+    color: #7F92AD;
+}
+  

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Soulrpg\CgrdNewsApp\Controller;
+use Soulrpg\CgrdNewsApp\Repository\NewsRepository;
 use Soulrpg\CgrdNewsApp\Utility\FlashMessageUtility;
 
 class HomeController
@@ -14,6 +15,12 @@ class HomeController
 
         $flashMessage = FlashMessageUtility::getFlashMessage();
 
-        echo $twig->render('home.html', ['flashMessage' => $flashMessage]);
+        if ($_SESSION['loggedIn']) {
+            $newsRepository = new NewsRepository();
+            $news = $newsRepository->getAll();
+            echo $twig->render('news.html', ['flashMessage' => $flashMessage, 'news' => $news]);
+        } else {
+            echo $twig->render('home.html', ['flashMessage' => $flashMessage]);
+        }
     }
 }

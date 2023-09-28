@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 body {
     background-image: url('Images/waves.svg');
     background-size: cover;
@@ -34,6 +39,8 @@ body {
     font-weight: 700;
     border: none;
     border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
 }
 
 #content input {
@@ -51,4 +58,36 @@ body {
 #content input::placeholder {
     color: #7F92AD;
 }
+
+.flash-message {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
   
+.flash-message.error {
+    color: #D06B6B;
+    border: 1px solid #FFC0C0;
+    background: #FFF0F0;
+}
+
+.flash-message.success {
+    color: #5AA013;
+    border: 1px solid #D3FFA8;
+    background: #F6FFF0;
+}
+
+#content a {
+    display: block;
+    font-size: 16px;
+}
+
+#content h2 {
+    color: #16396B;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}

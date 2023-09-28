@@ -8,12 +8,12 @@
     </head>
     <body>
         <div id="content">
+            <img src="/Images/logo.svg" class="logo" alt="logo"/>
             {% if flashMessage %}
-                <div class="flashMessage {{ flashMessage.type }}">
+                <div class="flash-message {{ flashMessage.type }}">
                     {{ flashMessage.message }}
                 </div>
             {% endif %}
-            <img src="/Images/logo.svg" class="logo" alt="logo"/>
             {% block content %}{% endblock %}
         </div>
     </body>

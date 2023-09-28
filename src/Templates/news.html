@@ -1,22 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>All News</h2>
-
+{% if news|length > 0 %}
+    <div id="news-list">
+        <h2>All News</h2>
+        {% for n in news %}
+            <div class="news" id="{{ n.id }}">
+                <div class="title">{{ n.title }}</div>
+                <div class="description">{{ n.description }}</div>
+                <div class="margin-left edit-icon"><img src="/Images/pencil.svg" class="icon" alt="edit"/></div>
+                <form action="/delete-news/{{ n.id }}" method="post" class="delete-icon"><img src="/Images/close.svg" class="icon" alt="close"/></form>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 <div id="create-form">
     <h2>Create News</h2>
     <form action="/create-news" method="post">
         <input type="text" id="title" name="title" placeholder="Title">
-        <input type="textarea" id="description" name="description" placeholder="Description" rows="15">
+        <textarea id="description" name="description" placeholder="Description" rows="12"></textarea>
         <input type="submit" value="Create" class="btn">
         <a href="/logout" class="btn">Logout</a>
     </form>
 </div>
-<div id="update-form hidden">
-    <h2>Edit News</h2>
-    <form action="/update-news" method="post">
-        <input type="text" id="title" name="title" placeholder="Title">
-        <input type="textarea" id="description" name="description" placeholder="Description" rows="15">
+<div id="update-form" class="hidden">
+    <div class="edit-header">
+        <h2>Edit News</h2>
+        <div id="close-edit" class="margin-left"><img src="/Images/close.svg" class="icon" alt="close"/></div>
+    </div>
+    <form action="/update-news/" method="post">
+        <input type="text" id="title-edit" name="title" placeholder="Title">
+        <textarea id="description-edit" name="description" placeholder="Description" rows="12"></textarea>
         <input type="submit" value="Save" class="btn">
         <a href="/logout" class="btn">Logout</a>
     </form>

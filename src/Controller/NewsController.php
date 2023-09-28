@@ -6,6 +6,7 @@ namespace Soulrpg\CgrdNewsApp\Controller;
 
 use Soulrpg\CgrdNewsApp\Repository\NewsRepository;
 use Soulrpg\CgrdNewsApp\Utility\FlashMessageUtility;
+use Soulrpg\CgrdNewsApp\Utility\LoginCheck;
 
 class NewsController
 {
@@ -18,6 +19,7 @@ class NewsController
 
     public function create(): void
     {
+        LoginCheck::checkIfLoggedIn();
         $title = $_POST['title'] ?? '';
         if ($title === null) {
             FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
@@ -35,6 +37,7 @@ class NewsController
 
     public function update(int $id): void
     {
+        LoginCheck::checkIfLoggedIn();
         $title = $_POST['title'] ?? '';
         if ($title === null) {
             FlashMessageUtility::setFlashMessage('No news title provided!', FlashMessageUtility::TYPE_ERROR);
@@ -52,6 +55,7 @@ class NewsController
 
     public function delete(int $id): void
     {
+        LoginCheck::checkIfLoggedIn();
         if ($this->newsRepository->remove($id)) {
             FlashMessageUtility::setFlashMessage('News was deleted!', FlashMessageUtility::TYPE_SUCCESS);
         }

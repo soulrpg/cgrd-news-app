@@ -10,7 +10,7 @@ use Soulrpg\CgrdNewsApp\Controller\NewsController;
 
 class Router
 {
-    const routes = [
+    const ROUTES = [
         'GET' => [
             '/' => [HomeController::class, 'home'],
             '/logout' => [LoginController::class, 'logout'],
@@ -26,7 +26,7 @@ class Router
     public function start(): void
     {
         $method = $_SERVER['REQUEST_METHOD'];
-        if (!isset(self::routes[$method])) {
+        if (!isset(self::ROUTES[$method])) {
             throw new \Exception('Route method not found.');
         }
         $path = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -37,7 +37,7 @@ class Router
             $pathParts[2] = ':id';
             $path = implode('/', $pathParts);
         }
-        $callable = self::routes[$method][$path];
+        $callable = self::ROUTES[$method][$path];
         if (!isset($callable)) {
             throw new \Exception('Route path not found.');
         }

@@ -10,7 +10,8 @@ class App
 {
     private Router $router;
 
-    public function __construct() {
+    public function __construct() 
+    {
         session_start();
         $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
         $dotenv->load();
